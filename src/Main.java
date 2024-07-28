@@ -27,19 +27,19 @@ public class Main {
         List<String> words = new ArrayList<>(List.of("cat","dog","mouse","dog","cow","cat"));
         Set<String> animals = new HashSet<>();
         for (int i = 0; i < words.size(); i++) {
-        animals.add(words.get(i));
+            animals.add(words.get(i));
         }
         System.out.println(animals.toString());
 
         System.out.println("Task 4");
         List<String> strings = new ArrayList<>(List.of("один", "два","два", "три", "три", "три"));
-        Map<String, Integer> result = strings.stream().collect(Collectors.toMap(
-                        e -> e,
-                        e -> 1,
-                        Integer::sum));
-        System.out.println(result.toString());
-
-
-
+        Map<String,Integer> wordAmount = new HashMap<>();
+        for (int i = 0; i < strings.size(); i++) {
+            int a=Collections.frequency(strings, strings.get(i));
+            if (!wordAmount.containsKey(strings.get(i))){
+                wordAmount.put(strings.get(i),a);
+            }
+        }
+        System.out.println(wordAmount.toString());
     }
 }
